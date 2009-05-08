@@ -6,8 +6,10 @@ class Model < ActiveRecord::Base
     :incr_counter => 1, 
     :features => {0 => Feature.new(:key => 0, :parent_feature_key => nil)} } }
     
-  def create_feature(type, parent_feature_key=0)
-    feature = Feature.new(:key => incr_counter, :parent_feature_key => parent_feature_key)
+  def create_feature(atributes={})
+    atributes[:incr_counter] = incr_counter
+    atributes[:parent_feature_key] ||= 0
+    feature = Feature.new(atributes)
     features[feature.key] = feature
     save
   end
@@ -18,6 +20,8 @@ class Model < ActiveRecord::Base
     save
   end
   
+  # This method doesn't destroy matching values in products
+  # see method clean_up on product
   def destroy_feature(feature_key)
     features[feature_key].delete
     save
@@ -32,15 +36,15 @@ class Model < ActiveRecord::Base
   
   def add_value(product_key, value, feature_key = 0, author_key = nil, author_weight = 1.0)
     product = Product.find_by_key(product_key)
-    features[feature_key].add_value(product, value, author_key, author_weight)
+    features[feature_key].add_value(self, product, value, author_key, author_weight)
   end
   
   def remove_value(product_key, feature_key = 0, author_key = nil)
     product = Product.find_by_key(product_key)
-    features[feature_key].remove_value(product, author_key)
+    features[feature_key].remove_value(self, product, author_key)
   end
   
-
+  def features_list() end
   
   private
   
