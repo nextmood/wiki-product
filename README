@@ -1,10 +1,11 @@
 == Wiki-product
 
-A flexible database to describe products
-Model: describe a hierarchical set of features (boolean, numeric, enumerated, text, etc...). You can see that as form.
-Product: each product is described by a set of model. For each model, the product is described by a set of feature values. 
-Doesn't cover the rating
+A Product database
 
+* Model: describe a hierarchical set of features (boolean, numeric, enumerated, text, etc...). You can see that as a form.
+* Product: each product is described by a set of models with associated feature values. 
+
+- doesn't cover the rating
 - design for crowd sourcing and aggregation
 - provide: product search and product similarities
 - API for external use
