@@ -9,12 +9,12 @@ class Feature
     self.datas = {}
   end
   
-  def add(type, item, rawvalue, author_key, weight)
-    item.add(type, key, rawvalue2store(rawvalue), author_key, weight )
+  def add_value(product, rawvalue, author_key, weight)
+    product.add_value(key, rawvalue2store(rawvalue), author_key, weight )
   end
   
-  def remove(type, item, author_key)
-    item.remove(type, key, author_key)
+  def remove_value(product, author_key)
+    product.remove_value(key, author_key)
   end
 
   def to_s() "feature ##{key} #{name} (#{datas[:values].size} values, #{datas[:ratings].size} ratings)"
