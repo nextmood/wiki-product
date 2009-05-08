@@ -1,0 +1,22 @@
+<h1>Listing models</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Datas</th>
+  </tr>
+
+<% @models.each do |model| %>
+  <tr>
+    <td><%=h model.name %></td>
+    <td><%=h model.datas %></td>
+    <td><%= link_to 'Show', model %></td>
+    <td><%= link_to 'Edit', edit_model_path(model) %></td>
+    <td><%= link_to 'Destroy', model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New model', new_model_path %>

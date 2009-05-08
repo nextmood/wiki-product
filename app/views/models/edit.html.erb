@@ -1,0 +1,20 @@
+<h1>Editing model</h1>
+
+<% form_for(@model) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :datas %><br />
+    <%= f.text_area :datas %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @model %> |
+<%= link_to 'Back', models_path %>
